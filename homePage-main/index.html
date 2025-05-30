@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<title>Molirain个人引导页</title>
+	<meta name="description" content="那些暗潮汹涌的 见不得人的 无法诉之于口的才是我真正的生活|关键词：Suinian,Nianbroken" />
+	<meta charset="utf-8" />
+	<meta http-equiv="content-language" content="zh-cn" />
+	<link rel="shortcut icon" href="images/favicon_1.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			background: black;
+			height: 100%;
+			overflow: hidden;
+		}
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			border: none;
+			transition: opacity 1s ease;
+		}
+		#firstFrame {
+			z-index: 2;
+		}
+		#homeFrame {
+			z-index: 1;
+			opacity: 0;
+		}
+		#homeFrame.show {
+			opacity: 1;
+			z-index: 3;
+		}
+	</style>
+</head>
+<body>
+	<iframe id="firstFrame" src="first.html"></iframe>
+	<iframe id="homeFrame" src="home.html"></iframe>
+
+	<script>
+		window.addEventListener("message", function (event) {
+			if (event.data === "video-ended") {
+				const homeFrame = document.getElementById("homeFrame");
+				homeFrame.classList.add("show");
+			}
+		});
+	</script>
+</body>
+</html>

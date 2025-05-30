@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<title>Molirain个人引导页</title>
+		<meta name="description" content="那些暗潮汹涌的 见不得人的 无法诉之于口的才是我真正的生活|关键词：Suinian,Nianbroken" />
+		<meta charset="utf-8" />
+		<meta http-equiv="content-language" content="zh-cn" />
+		<link rel="shortcut icon" href="images/favicon_1.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript>
+			<link rel="stylesheet" href="assets/css/noscript.css" />
+		</noscript>
+		<style>
+			html, body {
+				margin: 0;
+				padding: 0;
+				background: black;
+				height: 100%;
+				overflow: hidden;
+			}
+			#intro-video {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				z-index: 9999;
+				background: black;
+			}
+			#intro-video video {
+				width: 50%;
+				height: 50%;
+				object-fit: cover;
+			}
+			.fade-out {
+				animation: fadeOut 1s ease forwards;
+			}
+			@keyframes fadeOut {
+				to {
+					opacity: 0;
+					visibility: hidden;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="intro-video">
+			<video id="video" autoplay muted playsinline>
+				<source src="Molirain.mp4" type="video/mp4">
+				您的浏览器不支持 HTML5 视频。
+			</video>
+		</div>
+		<script>
+		const video = document.getElementById('video');
+		video.addEventListener('ended', () => {
+			parent.postMessage("video-ended", "*");
+		});
+	</script>
+	</body>
+</html>
